@@ -2,6 +2,13 @@
   "name": "email-app",
   "version": "1.0.0",
   "main": "index.js",
+  "engines": {
+    "node": "9.4.0",
+    "yarn": "0.27.5"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
   "repository": "git@github.com:mxdavis/email-app.git",
   "author": "mxdavis <md01@me.com>",
   "license": "MIT",
