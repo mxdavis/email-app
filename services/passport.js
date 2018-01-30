@@ -1,7 +1,20 @@
 const passport = require('passport')
-const keys = require('../config/keys.js')
 const GoogleStrategy = require('passport-google-oauth20').Strategy
+const mongoose = require('mongoose')
+const keys = require('../config/keys.js')
 
+const User = mongoose.model('users')
+
+//to send a cookie
+passport.serializeUser((user, done) => {
+  done(null, user.id)
+})
+//to interpret a cookie
+passport.deserializeUser((id, done) => {
+  User.findById(id).then(user => {
+    done(null, user)
+  })
+})
 
 passport.use(
   new GoogleStrategy(
@@ -11,7 +24,15 @@ passport.use(
       callbackURL: '/auth/google/callback'
     },
     (accessToken, refreshToken, profile, done) => {
-      console.log(accessToken)
+      User.findOne({ googleID: profile.id }).then(existingUser => {
+        if (existingUser) {
+          done(null, existingUser)
+        } else {
+          new User({ googleID: profile.id })
+            .save()
+            .then(user => done(null, user))
+        }
+      })
     }
   )
 )
