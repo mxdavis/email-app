@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js install -g create-react-app
+  /usr/local/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js add concurrently
 
 PATH: 
   /Library/Frameworks/Python.framework/Versions/3.6/bin:/Users/malkadavis/.asdf/bin:/Users/malkadavis/.asdf/shims:/Users/malkadavis/.rvm/gems/ruby-2.3.1/bin:/Users/malkadavis/.rvm/gems/ruby-2.3.1@global/bin:/Users/malkadavis/.rvm/rubies/ruby-2.3.1/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/usr/local:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Postgres.app/Contents/Versions/latest/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/Users/malkadavis/.asdf/bin:/Users/malkadavis/.asdf/shims:/Users/malkadavis/.rvm/gems/ruby-2.3.1/bin:/Users/malkadavis/.rvm/gems/ruby-2.3.1@global/bin:/Users/malkadavis/.rvm/rubies/ruby-2.3.1/bin:/usr/local:/usr/local/sbin:/Users/malkadavis/.rvm/bin:/Users/malkadavis/.rvm/bin:/Users/malkadavis/.rvm/bin:/Users/malkadavis/.rvm/bin
@@ -24,7 +24,9 @@ npm manifest:
     },
     "scripts": {
       "start": "node index.js",
-      "dev": "nodemon index.js"
+      "server": "nodemon index.js",
+      "client": "yarn start --prefix client",
+      "dev": "concurrently \"yarn server\" \"yarn start\""
     },
     "repository": "git@github.com:mxdavis/email-app.git",
     "author": "mxdavis <md01@me.com>",
@@ -2206,14 +2208,14 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/yallist/-/yallist-2.1.2.tgz#1c11f9218f076089a47dd512f93c6699a6a81d52"
 
 Trace: 
-  Error: `--global` has been deprecated. Please run "yarn global add create-react-app" instead.
+  Error: Found incompatible module
       at MessageError.Error (native)
       at new MessageError (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:186:110)
-      at Object.<anonymous> (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:21987:13)
+      at Object.checkOne (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:62444:11)
+      at /usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:22773:75
       at next (native)
       at step (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:98:30)
-      at /usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:109:13
-      at run (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:100334:22)
-      at /usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:100347:28
-      at flush (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:99841:9)
-      at _combinedTickCallback (internal/process/next_tick.js:67:7)
+      at /usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:116:14
+      at new Promise (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:100438:7)
+      at /usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:95:12
+      at /usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:22777:27
